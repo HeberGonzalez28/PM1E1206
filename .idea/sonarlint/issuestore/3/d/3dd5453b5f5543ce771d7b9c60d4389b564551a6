@@ -1,0 +1,18 @@
+
+d
+java:S1192"HDefine a constant instead of duplicating this literal " TEXT, " 4 times.(Éèò<8ô¨¹‚Û1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÉÆÑ¶8ÚŞ•‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(§ÿ›‰8ÚŞ•‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Æèñ8ÚŞ•‚Û1
+u	java:S115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‘’8ÚŞ•‚Û1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(œö²Íùÿÿÿÿ8ÚŞ•‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(µâ¡8ÚŞ•‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Èåâ†8ÚŞ•‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(µü8ÚŞ•‚Û1
+u	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(˜Î¤8ÚŞ•‚Û1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(õÓ£ãûÿÿÿÿ8ëæ¿‚Û1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(éìéÌ8¡‹Á‚Û1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(¶µ™Àüÿÿÿÿ8êŞ•‚Û1
+R
+java:S1068"0Remove this unused "CREATE_TABLE" private field.(©öÂäùÿÿÿÿ8“©¹‚Û1

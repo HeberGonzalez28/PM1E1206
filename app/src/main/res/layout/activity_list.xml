@@ -11,6 +11,34 @@
         <ListView
             android:id="@+id/idListContactos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="528dp" />
+
+        <Button
+            android:id="@+id/btncompartir"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btncompartir" />
+
+        <Button
+            android:id="@+id/btnverimagen"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnverimagen" />
+
+        <Button
+            android:id="@+id/btneliminar"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btneliminar" />
+
+        <Button
+            android:id="@+id/btnactualizar"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnactualizar" />
 
 </LinearLayout>

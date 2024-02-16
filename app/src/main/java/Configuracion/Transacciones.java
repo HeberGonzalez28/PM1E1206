@@ -2,9 +2,9 @@ package Configuracion;
 
 public class Transacciones {
 
-    public static final String DBName = "DBQuizPerson";
+    public static final String DBName = "DBContactos";
 
-    public static final String TablePersonas = "contactos";
+    public static final String TableContactos = "contactos";
 
     public static final String id = "id";
 
@@ -18,16 +18,12 @@ public class Transacciones {
 
     public static final String imagen = "imagen";
 
-    private static final String CREATE_TABLE = "CREATE TABLE " + TablaContactos + " (" +
-             id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            pais + " TEXT, " +
-            nombre + " TEXT, " +
-            telefono + " TEXT, " +
-            nota + " TEXT, " +
-            imagen + " BLOB)";
+    public static final String CreateTableContactos = "Create table "+ TableContactos +" ("+
+            "id INTEGER PRIMARY KEY AUTOINCREMENT, pais TEXT, nombre TEXT, telefono TEXT, nota TEXT, "+
+            "imagen BLOB )";
 
-    public static final String DropTablePersonas = "DROP TABLE IF EXISTS " + TablaContactos + ";";
+    public static final String DropTableContactos = "DROP TABLE IF EXISTS " + TableContactos;
 
-    public static final String SelectAllPersonas = "SELECT * FROM " + TablaContactos + ";";
+    public static final String SelectAllContactos = "SELECT * FROM " + TableContactos;
 
 }

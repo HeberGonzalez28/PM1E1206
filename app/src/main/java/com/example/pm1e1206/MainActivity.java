@@ -8,27 +8,28 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnContactos,btnAgregar;
+    Button btnaddcont, btnlistcont;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAgregar = (Button) findViewById(R.id.btnagregarcontacto);
-        btnContactos = (Button) findViewById(R.id.btnvercontactos);
+        btnaddcont = (Button) findViewById(R.id.btnaddcon);
+        btnlistcont = (Button) findViewById(R.id.btncontactos);
 
-        btnAgregar.setOnClickListener(new View.OnClickListener() {
+        btnaddcont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ActivityAgregar.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityContacto.class);
                 startActivity(intent);
             }
         });
 
-        btnContactos.setOnClickListener(new View.OnClickListener() {
+        btnlistcont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ActivityVerLista.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityList.class);
                 startActivity(intent);
             }
         });

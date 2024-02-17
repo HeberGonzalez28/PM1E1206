@@ -15,30 +15,27 @@
 
         <Button
             android:id="@+id/btncompartir"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnCompartir" />
+            android:text="@string/botoncompartir" />
 
         <Button
             android:id="@+id/btnverimagen"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/verimagen" />
 
         <Button
             android:id="@+id/btneliminar"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Eliminarcontacto" />
+            android:text="@string/eliminarcont" />
 
         <Button
             android:id="@+id/btnactualizar"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/actualizarcontacto" />
+            android:text="@string/actualizarcont"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>

@@ -11,7 +11,7 @@
         <ListView
             android:id="@+id/idListContactos"
             android:layout_width="match_parent"
-            android:layout_height="528dp" />
+            android:layout_height="459dp" />
 
         <Button
             android:id="@+id/btncompartir"

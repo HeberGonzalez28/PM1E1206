@@ -9,4 +9,9 @@
     <string name="verimagen">Ver Imagen</string>
     <string name="eliminarcont">Eliminar Contacto</string>
     <string name="actualizarcont">Actualizar Contacto</string>
+    <string name="ejemcod">Ejemplo: +504</string>
+    <string name="ejempais">Ejemplo: Honduras</string>
+    <string name="savepais">Registrar</string>
+    <string name="updatepais">Actualizar</string>
+    <string name="eliminarpais">Eliminar</string>
 </resources>

@@ -105,4 +105,14 @@ public class ActivityList extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    public void onBackButtonClick(View view) {
+        onBackPressed();
+    }
+
+
 }

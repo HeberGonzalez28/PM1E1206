@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,32 +10,79 @@
 
         <ListView
             android:id="@+id/idListContactos"
-            android:layout_width="match_parent"
-            android:layout_height="459dp" />
+            android:layout_width="408dp"
+            android:layout_height="306dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buscador" />
 
         <Button
             android:id="@+id/btncompartir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/botoncompartir" />
+            android:layout_marginTop="15dp"
+            android:text="@string/botoncompartir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idListContactos" />
 
         <Button
             android:id="@+id/btnverimagen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/verimagen" />
+            android:layout_marginTop="15dp"
+            android:text="@string/verimagen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btncompartir" />
 
         <Button
             android:id="@+id/btneliminar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/eliminarcont" />
+            android:layout_marginTop="15dp"
+            android:text="@string/eliminarcont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnverimagen" />
 
         <Button
             android:id="@+id/btnactualizar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="@string/actualizarcont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btneliminar"
             tools:ignore="SpeakableTextPresentCheck" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnAtras"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="302dp"
+            android:text="@string/atras"
+            android:onClick="onBackButtonClick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SearchView
+            android:id="@+id/buscador"
+            android:layout_width="408dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAtras" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

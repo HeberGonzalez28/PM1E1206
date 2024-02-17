@@ -14,4 +14,5 @@
     <string name="savepais">Registrar</string>
     <string name="updatepais">Actualizar</string>
     <string name="eliminarpais">Eliminar</string>
+    <string name="atras">Atras ...</string>
 </resources>

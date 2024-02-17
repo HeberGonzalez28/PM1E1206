@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -82,6 +83,8 @@ public class ActivityContacto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AddContacto();
+
+
             }
         });
         btnlistcont.setOnClickListener(new View.OnClickListener() {
@@ -167,20 +170,44 @@ public class ActivityContacto extends AppCompatActivity {
 
     //Agregar un nuevo contacto
     private void AddContacto() {
-        SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.DBName, null, 1);
-        SQLiteDatabase db = conexion.getWritableDatabase();
 
-        ContentValues valores = new ContentValues();
-        valores.put(Transacciones.pais, pais.getText().toString());
-        valores.put(Transacciones.nombre, nombre.getText().toString());
-        valores.put(Transacciones.telefono, telefono.getText().toString());
-        valores.put(Transacciones.nota, nota.getText().toString());
+        String nombreText = nombre.getText().toString().trim();
+        String telefonoText = telefono.getText().toString().trim();
+        String notaText = nota.getText().toString().trim();
 
-        Long resultado = db.insert(Transacciones.TableContactos, Transacciones.id, valores);
+        if (nombreText.isEmpty()) {
+            showAlert("Debe escribir un nombre");
+        } else if (telefonoText.isEmpty()) {
+            showAlert("Debe escribir un telefono");
+        } else if (notaText.isEmpty()) {
+            showAlert("Debe escribir una nota");
+        } else {
 
-        Toast.makeText(getApplicationContext(), "Registro Ingresado con exito " + resultado.toString(),
-                Toast.LENGTH_LONG).show();
+            SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.DBName, null, 1);
+            SQLiteDatabase db = conexion.getWritableDatabase();
 
-        db.close();
+
+            ContentValues valores = new ContentValues();
+            valores.put(Transacciones.pais, pais.getText().toString());
+            valores.put(Transacciones.nombre, nombreText);
+            valores.put(Transacciones.telefono, telefonoText);
+            valores.put(Transacciones.nota, notaText);
+
+            Long resultado = db.insert(Transacciones.TableContactos, Transacciones.id, valores);
+
+            Toast.makeText(getApplicationContext(), "Registro Ingresado con exito " + resultado.toString(),
+                    Toast.LENGTH_LONG).show();
+
+            db.close();
+        }
+
+    }
+    private void showAlert(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setTitle("Campo Vacío")
+                .setPositiveButton("Aceptar", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

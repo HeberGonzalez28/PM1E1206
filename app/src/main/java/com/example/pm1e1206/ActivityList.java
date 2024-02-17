@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -29,10 +30,12 @@ public class ActivityList extends AppCompatActivity {
 
     ArrayList<String> Arreglo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
 
         conexion = new SQLiteConexion(this, Transacciones.DBName, null, 1);
         listContactos = (ListView) findViewById(R.id.idListContactos);
@@ -61,24 +64,6 @@ public class ActivityList extends AppCompatActivity {
             }
         });
 
-        listContactos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Contactos contactoSeleccionado = lista.get(position);
-                EliminarContacto(contactoSeleccionado.getId());
-                return true;
-            }
-        });
-    }
-    //Eliminar
-
-    private void EliminarContacto(int id){
-        SQLiteDatabase db = conexion.getReadableDatabase();
-        db.delete(Transacciones.TableContactos, Transacciones.id + "=?", new String[]{
-                String.valueOf(id)
-        });
-        db.close();
-        ObtenerDatos();
     }
 
 

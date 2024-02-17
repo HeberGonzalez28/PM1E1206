@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">PM1E1206</string>
     <string name="addcontacto">Agregar Contacto</string>
-    <string name="listcontacto">Contactos</string>
+    <string name="listcontacto">Contactos Guardados</string>
     <string name="addpais">+</string>
+    <string name="guardarcont">Guardar Contacto</string>
+    <string name="addimagen">Escoger Imagen</string>
 </resources>

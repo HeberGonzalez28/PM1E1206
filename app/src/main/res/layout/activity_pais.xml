@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtcodarea" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/txtnombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -81,7 +81,7 @@
         android:text="@string/savepais"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 
     <Button
         android:id="@+id/btnupdatepais"
@@ -92,7 +92,7 @@
         android:text="@string/updatepais"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/btnsavepais"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 
     <Button
         android:id="@+id/btnelimpais"
@@ -105,5 +105,5 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnupdatepais"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

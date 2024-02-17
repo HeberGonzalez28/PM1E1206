@@ -60,7 +60,27 @@ public class ActivityList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        listContactos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Contactos contactoSeleccionado = lista.get(position);
+                EliminarContacto(contactoSeleccionado.getId());
+                return true;
+            }
+        });
     }
+    //Eliminar
+
+    private void EliminarContacto(int id){
+        SQLiteDatabase db = conexion.getReadableDatabase();
+        db.delete(Transacciones.TableContactos, Transacciones.id + "=?", new String[]{
+                String.valueOf(id)
+        });
+        db.close();
+        ObtenerDatos();
+    }
+
 
     private void ObtenerDatos(){
         SQLiteDatabase db = conexion.getReadableDatabase();

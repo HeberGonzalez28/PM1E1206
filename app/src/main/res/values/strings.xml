@@ -3,8 +3,4 @@
     <string name="addcontacto">Agregar Contacto</string>
     <string name="listcontacto">Contactos</string>
     <string name="addpais">+</string>
-    <string name="btncompartir">Compartir Contacto</string>
-    <string name="btnverimagen">Ver imagen</string>
-    <string name="btneliminar">Eliminar Contacto</string>
-    <string name="btnactualizar">Actualizar Contacto</string>
 </resources>

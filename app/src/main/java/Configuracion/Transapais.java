@@ -3,7 +3,7 @@ package Configuracion;
 public class Transapais {
 
     //nombre de la BD
-    public static final String BDname="PM012024";
+    public static final String BDname="PME1206";
 
     //Creacion de las tablas de base de datos
     public static final String TablePais = "Pais";
@@ -13,8 +13,8 @@ public class Transapais {
     public static final String codigo = "codigo";
     public static final String nombre = "nombre";
 
-    public static final String CreateTablePais = "CREATE TABLE "+ TablePais +"("+
-        "id INTEGER PRIMARY KEY AUTOINCREMENT, pais TEXT, nombre TEXT)";
+    public static final String CreateTablePais = "CREATE TABLE  "+ TablePais + " ("+
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, codigo TEXT, nombre TEXT)";
 
     public static final String SelectAllPais = "SELECT * FROM " + TablePais;
 

@@ -2,7 +2,7 @@ package Configuracion;
 
 public class Transacciones {
 
-    public static final String DBName = "DBContactos";
+    public static final String DBName = "PME1206";
 
     public static final String TableContactos = "contactos";
 

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 
@@ -12,9 +13,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,10 +31,13 @@ import androidx.core.content.ContextCompat;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Configuracion.SQLiteConexion;
 import Configuracion.Transacciones;
+import Configuracion.Transapais;
 
 public class ActivityContacto extends AppCompatActivity {
 
@@ -41,6 +47,11 @@ public class ActivityContacto extends AppCompatActivity {
     Spinner combopais;
     ImageView imageView;
     Button btntakefoto, btnaddpais, btnaddcont, btnlistcont;
+
+    SQLiteConexion conexion = new SQLiteConexion(this, Transapais.BDname, null, 1);
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,8 @@ public class ActivityContacto extends AppCompatActivity {
         nombre = (EditText) findViewById(R.id.Nombre);
         telefono = (EditText) findViewById(R.id.Telefono);
         nota = (EditText) findViewById(R.id.Nota);
+
+        ObtenerInfo();
 
         btntakefoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +104,82 @@ public class ActivityContacto extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void ObtenerInfo() {
+
+        Spinner mySpinner = findViewById(R.id.spinner);
+
+        // Crea una lista de elementos para el spinner
+        List<String> spinnerArray = new ArrayList<>();
+        spinnerArray.add("Seleccione");
+        /*spinnerArray.add("Honduras +504");
+        spinnerArray.add("Guatemala +502");
+        spinnerArray.add("Salvador +503");
+        spinnerArray.add("Belice +501");
+        spinnerArray.add("Costa Rica +506");
+        spinnerArray.add("Nicaragua +505");*/
+        // ... Añade tantos elementos como necesites
+
+        SQLiteDatabase db = conexion.getReadableDatabase();
+        // Cursor de base de datos para recorrer los datos
+        Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
+
+        while (cursor.moveToNext())
+        {
+            //String cosa1,cosa2;
+
+            spinnerArray.add(String.valueOf(cursor.getInt(0)) + " " + String.valueOf(cursor.getInt(2)));
+            //person.setId(cursor.getInt(0));
+            //person.setNombres(cursor.getString(1));
+            //person.setApellidos(cursor.getString(2));
+            //person.setEdad(cursor.getInt(3));
+            //person.setCorreo(cursor.getString(4));
+
+            //lista.add(person);
+        }
+
+
+        // Crea un ArrayAdapter usando la lista de elementos y un layout de spinner predeterminado
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        // Especifica el layout a usar cuando aparece la lista de opciones
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Aplica el adaptador al spinner
+        mySpinner.setAdapter(adapter);
+
+       /* //spiner
+
+
+
+        List<String> spinnerArray = new ArrayList<>();
+        spinnerArray.add("hola mundo");
+
+        SQLiteDatabase db = conexion.getReadableDatabase();
+        // Cursor de base de datos para recorrer los datos
+        Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
+
+        while (cursor.moveToNext())
+        {
+            spinnerArray.add(String.valueOf(cursor.getInt(1)) + " " + String.valueOf(cursor.getInt(2)));
+            //person.setId(cursor.getInt(0));
+            //person.setNombres(cursor.getString(1));
+            //person.setApellidos(cursor.getString(2));
+            //person.setEdad(cursor.getInt(3));
+            //person.setCorreo(cursor.getString(4));
+
+            //lista.add(person);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(adapter);
+
+*/
+
+        cursor.close();
+
+
     }
 
     private void Permisos() {
@@ -183,4 +272,36 @@ public class ActivityContacto extends AppCompatActivity {
 
         db.close();
     }
+    //spiner
+   /* private void ObtenerInfo()
+    {
+        SQLiteDatabase db = conexion.getReadableDatabase();
+
+        List<String> spinnerArray = new ArrayList<>();
+        spinnerArray.add("hola mundo");
+
+
+        // Cursor de base de datos para recorrer los datos
+        Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
+
+        while (cursor.moveToNext())
+        {
+            spinnerArray.add(String.valueOf(cursor.getInt(1)) + " " + String.valueOf(cursor.getInt(2)));
+            person.setId(cursor.getInt(0));
+            person.setNombres(cursor.getString(1));
+            person.setApellidos(cursor.getString(2));
+            person.setEdad(cursor.getInt(3));
+            person.setCorreo(cursor.getString(4));
+
+            lista.add(person);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(adapter);
+
+
+
+    //    cursor.close();
+
+    }*/
 }

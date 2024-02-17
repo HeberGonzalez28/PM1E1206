@@ -18,27 +18,27 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btncompartir" />
+            android:text="@string/btnCompartir" />
 
         <Button
             android:id="@+id/btnverimagen"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnverimagen" />
+            android:text="@string/verimagen" />
 
         <Button
             android:id="@+id/btneliminar"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btneliminar" />
+            android:text="@string/Eliminarcontacto" />
 
         <Button
             android:id="@+id/btnactualizar"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnactualizar" />
+            android:text="@string/actualizarcontacto" />
 
 </LinearLayout>

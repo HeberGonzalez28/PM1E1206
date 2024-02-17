@@ -3,6 +3,4 @@
     <string name="addcontacto">Agregar Contacto</string>
     <string name="listcontacto">Contactos</string>
     <string name="addpais">+</string>
-    <string name="addimagen">Escoger Imagen</string>
-    <string name="addcont">Guardar Contacto</string>
 </resources>

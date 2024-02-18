@@ -30,11 +30,22 @@ public class ActivityList extends AppCompatActivity {
 
     ArrayList<String> Arreglo;
 
+    Button btnAtras;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        btnAtras = (Button) findViewById(R.id.btnAtras);
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         conexion = new SQLiteConexion(this, Transacciones.DBName, null, 1);
@@ -107,12 +118,12 @@ public class ActivityList extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         super.onBackPressed();
     }
 
     public void onBackButtonClick(View view) {
         onBackPressed();
     }
-
 
 }

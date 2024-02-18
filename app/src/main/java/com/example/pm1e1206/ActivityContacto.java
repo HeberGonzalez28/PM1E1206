@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,20 +40,23 @@ import java.util.List;
 import Configuracion.SQLiteConexion;
 import Configuracion.Transacciones;
 import Configuracion.Transapais;
+import Models.Pais;
 
 public class ActivityContacto extends AppCompatActivity {
 
     static final int peticion_camara = 100;
     static final int  peticion_foto = 102;
-    EditText pais, nombre, telefono, nota;
+    EditText nombre, telefono, nota;
+    String pais;
     Spinner combopais;
+
     ImageView imageView;
     Button btntakefoto, btnaddpais, btnaddcont, btnlistcont;
 
     SQLiteConexion conexion = new SQLiteConexion(this, Transapais.BDname, null, 1);
 
-
-
+    ArrayList<Pais> lista;
+    ArrayList<String> Arreglo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +77,36 @@ public class ActivityContacto extends AppCompatActivity {
 
         //CAJA DE TEXTO
         nombre = (EditText) findViewById(R.id.Nombre);
+
         telefono = (EditText) findViewById(R.id.Telefono);
         nota = (EditText) findViewById(R.id.Nota);
 
         ObtenerInfo();
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item,Arreglo);
+
+        combopais.setAdapter(adapter);
+
+        combopais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try
+                {
+                    pais = combopais.getSelectedItem().toString();
+                }
+                catch (Exception ex)
+                {
+                    ex.toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         btntakefoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,80 +139,39 @@ public class ActivityContacto extends AppCompatActivity {
         });
     }
 
-    private void ObtenerInfo() {
-
-        Spinner mySpinner = findViewById(R.id.spinner);
-
-        // Crea una lista de elementos para el spinner
-        List<String> spinnerArray = new ArrayList<>();
-        spinnerArray.add("Seleccione");
-        /*spinnerArray.add("Honduras +504");
-        spinnerArray.add("Guatemala +502");
-        spinnerArray.add("Salvador +503");
-        spinnerArray.add("Belice +501");
-        spinnerArray.add("Costa Rica +506");
-        spinnerArray.add("Nicaragua +505");*/
-        // ... Añade tantos elementos como necesites
-
+    private void ObtenerInfo()
+    {
         SQLiteDatabase db = conexion.getReadableDatabase();
+        Pais pais = null;
+        lista = new ArrayList<Pais>();
+
         // Cursor de base de datos para recorrer los datos
         Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
 
         while (cursor.moveToNext())
         {
-            //String cosa1,cosa2;
+            pais = new Pais();
+            pais.setId(cursor.getInt(0));
+            pais.setCodigopais(cursor.getString(1));
+            pais.setPais(cursor.getString(2));
 
-            spinnerArray.add(String.valueOf(cursor.getInt(0)) + " " + String.valueOf(cursor.getInt(2)));
-            //person.setId(cursor.getInt(0));
-            //person.setNombres(cursor.getString(1));
-            //person.setApellidos(cursor.getString(2));
-            //person.setEdad(cursor.getInt(3));
-            //person.setCorreo(cursor.getString(4));
-
-            //lista.add(person);
+            lista.add(pais);
         }
-
-
-        // Crea un ArrayAdapter usando la lista de elementos y un layout de spinner predeterminado
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
-
-        // Especifica el layout a usar cuando aparece la lista de opciones
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Aplica el adaptador al spinner
-        mySpinner.setAdapter(adapter);
-
-       /* //spiner
-
-
-
-        List<String> spinnerArray = new ArrayList<>();
-        spinnerArray.add("hola mundo");
-
-        SQLiteDatabase db = conexion.getReadableDatabase();
-        // Cursor de base de datos para recorrer los datos
-        Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
-
-        while (cursor.moveToNext())
-        {
-            spinnerArray.add(String.valueOf(cursor.getInt(1)) + " " + String.valueOf(cursor.getInt(2)));
-            //person.setId(cursor.getInt(0));
-            //person.setNombres(cursor.getString(1));
-            //person.setApellidos(cursor.getString(2));
-            //person.setEdad(cursor.getInt(3));
-            //person.setCorreo(cursor.getString(4));
-
-            //lista.add(person);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(adapter);
-
-*/
 
         cursor.close();
 
+        FillData();
+    }
 
+    private void FillData()
+    {
+        Arreglo = new ArrayList<String>();
+        for(int i = 0; i < lista.size(); i ++)
+        {
+            Arreglo.add(lista.get(i).getId() + " - "+
+                    lista.get(i).getCodigopais()  +" - "+
+                    lista.get(i).getPais()) ;
+        }
     }
 
     private void Permisos() {
@@ -260,6 +249,7 @@ public class ActivityContacto extends AppCompatActivity {
     //Agregar un nuevo contacto
     private void AddContacto() {
 
+        String pais = combopais.getSelectedItem().toString();
         String nombreText = nombre.getText().toString().trim();
         String telefonoText = telefono.getText().toString().trim();
         String notaText = nota.getText().toString().trim();
@@ -275,9 +265,11 @@ public class ActivityContacto extends AppCompatActivity {
             SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.DBName, null, 1);
             SQLiteDatabase db = conexion.getWritableDatabase();
 
+            //int posicion = combopais.getSelectedItemPosition();
+
 
             ContentValues valores = new ContentValues();
-            valores.put(Transacciones.pais, pais.getText().toString());
+            valores.put(Transacciones.pais, pais);
             valores.put(Transacciones.nombre, nombreText);
             valores.put(Transacciones.telefono, telefonoText);
             valores.put(Transacciones.nota, notaText);
@@ -299,36 +291,5 @@ public class ActivityContacto extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    //spiner
-   /* private void ObtenerInfo()
-    {
-        SQLiteDatabase db = conexion.getReadableDatabase();
 
-        List<String> spinnerArray = new ArrayList<>();
-        spinnerArray.add("hola mundo");
-
-
-        // Cursor de base de datos para recorrer los datos
-        Cursor cursor = db.rawQuery(Transapais.SelectAllPais, null);
-
-        while (cursor.moveToNext())
-        {
-            spinnerArray.add(String.valueOf(cursor.getInt(1)) + " " + String.valueOf(cursor.getInt(2)));
-            person.setId(cursor.getInt(0));
-            person.setNombres(cursor.getString(1));
-            person.setApellidos(cursor.getString(2));
-            person.setEdad(cursor.getInt(3));
-            person.setCorreo(cursor.getString(4));
-
-            lista.add(person);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(adapter);
-
-
-
-    //    cursor.close();
-
-    }*/
 }

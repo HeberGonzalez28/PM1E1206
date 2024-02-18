@@ -11,6 +11,10 @@ public class Pais {
         this.pais = pais;
     }
 
+    public Pais() {
+
+    }
+
     public int getId() {
         return id;
     }

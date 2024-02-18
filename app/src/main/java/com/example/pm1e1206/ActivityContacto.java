@@ -276,10 +276,20 @@ public class ActivityContacto extends AppCompatActivity {
 
             Long resultado = db.insert(Transacciones.TableContactos, Transacciones.id, valores);
 
-            Toast.makeText(getApplicationContext(), "Registro Ingresado con exito " + resultado.toString(),
-                    Toast.LENGTH_LONG).show();
+            if(resultado>0) {
+                Toast.makeText(getApplicationContext(), "Registro Ingresado con exito ",Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(getApplicationContext(), "Error al Ingresar los datos ",Toast.LENGTH_LONG).show();
+            }
 
+            //Cierra la conexion de la BD
             db.close();
+
+            //Limpia los campos
+            imageView.setImageBitmap(null);
+            nombre.setText("");
+            telefono.setText("");
+            nota.setText("");
         }
 
     }

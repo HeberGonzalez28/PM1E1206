@@ -1,5 +1,6 @@
 package com.example.pm1e1206;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
@@ -45,18 +46,44 @@ public class ActivityPais extends AppCompatActivity {
     }
 
     private void AddPais() {
-        SQLiteConexion conexion = new SQLiteConexion(this, Transapais.BDname, null, 1);
-        SQLiteDatabase db = conexion.getWritableDatabase();
 
-        ContentValues valores = new ContentValues();
-        valores.put(Transapais.codigo, codigo.getText().toString());
-        valores.put(Transapais.nombre, nombre.getText().toString());
+        String codigotext = codigo.getText().toString().trim();
+        String nombretext = nombre.getText().toString().trim();
 
-        Long resultado = db.insert(Transapais.TablePais, Transapais.id, valores);
+        if (codigotext.isEmpty()) {
+            showAlert("Debe escribir un codigo de area");
+        } else if (nombretext.isEmpty()) {
+            showAlert("Debe escribir el nombre del pais");
+        } else {
 
-        Toast.makeText(getApplicationContext(), "Registro Ingresado con exito " + resultado.toString(),
-                Toast.LENGTH_LONG).show();
+            SQLiteConexion conexion = new SQLiteConexion(this, Transapais.BDname, null, 1);
+            SQLiteDatabase db = conexion.getWritableDatabase();
 
-        db.close();
+            ContentValues valores = new ContentValues();
+            valores.put(Transapais.codigo, codigo.getText().toString());
+            valores.put(Transapais.nombre, nombre.getText().toString());
+
+            Long resultado = db.insert(Transapais.TablePais, Transapais.id, valores);
+
+            if(resultado>0) {
+                Toast.makeText(getApplicationContext(), "Registro Ingresado con exito ",Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(getApplicationContext(), "Error al Ingresar los datos ",Toast.LENGTH_LONG).show();
+            }
+
+            db.close();
+
+            //Limpia los campos
+            codigo.setText("");
+            nombre.setText("");
+        }
+    }
+    private void showAlert(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setTitle("Campo Vacío")
+                .setPositiveButton("Aceptar", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

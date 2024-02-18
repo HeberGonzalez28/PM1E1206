@@ -92,7 +92,7 @@ public class ActivityList extends AppCompatActivity {
             contac.setNombre(cursor.getString(2));
             contac.setTelefono(String.valueOf(cursor.getInt(3)));
             contac.setNota(cursor.getString(4));
-            contac.setImagen(cursor.getBlob(5));
+            contac.setImagen(cursor.getString(5));
 
             lista.add(contac);
 

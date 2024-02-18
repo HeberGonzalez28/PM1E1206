@@ -47,7 +47,7 @@ public class ActivityContacto extends AppCompatActivity {
     static final int peticion_camara = 100;
     static final int  peticion_foto = 102;
     EditText nombre, telefono, nota;
-    String pais;
+    String pais, URLimagen;
     Spinner combopais;
 
     ImageView imageView;
@@ -243,6 +243,7 @@ public class ActivityContacto extends AppCompatActivity {
     private String crearNombreArchivojpg() {
         String fecha = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String nombre = fecha + ".jpg";
+        URLimagen = nombre;
         return nombre;
 }
 
@@ -269,6 +270,7 @@ public class ActivityContacto extends AppCompatActivity {
 
 
             ContentValues valores = new ContentValues();
+            valores.put(Transacciones.imagen, URLimagen);
             valores.put(Transacciones.pais, pais);
             valores.put(Transacciones.nombre, nombreText);
             valores.put(Transacciones.telefono, telefonoText);

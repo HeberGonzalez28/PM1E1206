@@ -20,7 +20,7 @@ public class Transacciones {
 
     public static final String CreateTableContactos = "Create table "+ TableContactos +" ("+
             "id INTEGER PRIMARY KEY AUTOINCREMENT, pais TEXT, nombre TEXT, telefono TEXT, nota TEXT, "+
-            "imagen BLOB )";
+            "imagen TEXT )";
 
     public static final String DropTableContactos = "DROP TABLE IF EXISTS " + TableContactos;
 

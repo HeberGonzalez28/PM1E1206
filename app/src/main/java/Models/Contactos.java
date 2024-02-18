@@ -7,9 +7,9 @@ public class Contactos {
     private String nombre;
     private String telefono;
     private String nota;
-    private byte[] imagen;
+    private String imagen;
 
-    public Contactos(int id, String pais, String nombre, String telefono, String nota, byte[] imagen) {
+    public Contactos(int id, String pais, String nombre, String telefono, String nota, String imagen) {
         this.id = id;
         this.pais = pais;
         this.nombre = nombre;
@@ -61,11 +61,11 @@ public class Contactos {
         this.nota = nota;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 }

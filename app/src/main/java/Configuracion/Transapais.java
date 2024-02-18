@@ -13,7 +13,7 @@ public class Transapais {
     public static final String codigo = "codigo";
     public static final String nombre = "nombre";
 
-    public static final String CreateTablePais = "CREATE TABLE  "+ TablePais + " ("+
+    public static final String CreateTablePais = "CREATE TABLE "+ TablePais +"("+
         "id INTEGER PRIMARY KEY AUTOINCREMENT, codigo TEXT, nombre TEXT)";
 
     public static final String SelectAllPais = "SELECT * FROM " + TablePais;

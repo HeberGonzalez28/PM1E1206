@@ -15,6 +15,9 @@ import Configuracion.Transapais;
 
 public class ActivityPais extends AppCompatActivity {
 
+    String Pais;
+    private Transapais db;
+
     EditText codigo, nombre;
     Button btnaddpais, btnupdatep, btneliminarp;
 
@@ -31,6 +34,7 @@ public class ActivityPais extends AppCompatActivity {
         btnaddpais = (Button) findViewById(R.id.btnsavepais);
         btnupdatep = (Button) findViewById(R.id.btnupdatepais);
         btneliminarp = (Button) findViewById(R.id.btnelimpais);
+
 
         btnaddpais.setOnClickListener(new View.OnClickListener() {
             @Override
